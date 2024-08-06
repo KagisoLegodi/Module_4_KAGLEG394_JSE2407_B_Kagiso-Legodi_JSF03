@@ -56,10 +56,11 @@ export default {
       router.push({ path: "/", query: route.query });
     };
 
+    onMounted(fetchProduct);
+
     return {
       product,
       loading,
-      fetchProduct,
       goBack,
     };
   },
