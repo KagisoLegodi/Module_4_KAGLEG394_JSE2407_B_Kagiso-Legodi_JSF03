@@ -35,3 +35,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.sort {
+  margin-left: 1rem;
+}
+</style>
