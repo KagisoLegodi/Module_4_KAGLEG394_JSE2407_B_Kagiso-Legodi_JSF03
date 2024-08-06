@@ -96,6 +96,16 @@ export default {
       categories.value = await fetchCategories();
     };
 
+    const handleCategoryChange = (newCategory) => {
+      selectedCategory.value = newCategory;
+      router.push({ query: { ...route.query, category: newCategory } });
+    };
+
+    const handleSortChange = (newSort) => {
+      sortOrder.value = newSort;
+      router.push({ query: { ...route.query, sort: newSort } });
+    };
+
     return {
       route,
       router,
@@ -107,6 +117,8 @@ export default {
       filteredProducts,
       fetchProducts,
       fetchCategoriesData,
+      handleCategoryChange,
+      handleSortChange,
     };
   },
 };
