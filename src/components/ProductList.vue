@@ -79,6 +79,19 @@ export default {
       );
     });
 
+    const fetchProducts = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        products.value = data;
+      } catch (error) {
+        console.error(error);
+      } finally {
+        loading.value = false;
+      }
+    };
+
     return {
       route,
       router,
@@ -88,6 +101,7 @@ export default {
       selectedCategory,
       sortOrder,
       filteredProducts,
+      fetchProducts,
     };
   },
 };
