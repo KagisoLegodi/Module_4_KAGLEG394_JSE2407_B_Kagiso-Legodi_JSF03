@@ -101,3 +101,23 @@
     </header>
   </template>
   
+  <script>
+  import { ref } from "vue";
+  
+  export default {
+    name: "Header",
+    setup() {
+      const showNavbar = ref(false);
+  
+      const toggleNavbar = () => {
+        showNavbar.value = !showNavbar.value;
+      };
+  
+      return {
+        showNavbar,
+        toggleNavbar,
+      };
+    },
+  };
+  </script>
+  
