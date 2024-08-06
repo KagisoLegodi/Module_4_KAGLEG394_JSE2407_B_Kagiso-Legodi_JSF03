@@ -52,25 +52,34 @@
       Sort,
     },
     setup() {
-      const route = useRoute();
-      const router = useRouter();
-  
-      const loading = ref(true);
-      const products = ref([]);
-      const categories = ref([]);
-      const selectedCategory = ref(route.query.category || "");
-      const sortOrder = ref(route.query.sort || "");
-  
-      return {
-        route,
-        router,
-        loading,
-        products,
-        categories,
-        selectedCategory,
-        sortOrder,
-      };
-    },
-  };
-  </script>
+    const route = useRoute();
+    const router = useRouter();
+
+    const loading = ref(true);
+    const products = ref([]);
+    const categories = ref([]);
+    const selectedCategory = ref(route.query.category || "");
+    const sortOrder = ref(route.query.sort || "");
+
+    const filteredProducts = computed(() => {
+      return filterProducts(
+        products.value,
+        selectedCategory.value,
+        sortOrder.value
+      );
+    });
+
+    return {
+      route,
+      router,
+      loading,
+      products,
+      categories,
+      selectedCategory,
+      sortOrder,
+      filteredProducts,
+    };
+  },
+};
+</script>
   
