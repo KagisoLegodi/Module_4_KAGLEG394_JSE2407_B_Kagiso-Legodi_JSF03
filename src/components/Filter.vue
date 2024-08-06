@@ -67,8 +67,7 @@ select:focus {
 }
 
 @media (max-width: 768px) {
-  .filter,
-  .sort {
+  .filter {
     margin: 0.5rem 0;
     width: 100%;
   }
@@ -79,8 +78,7 @@ select:focus {
 }
 
 @media (max-width: 480px) {
-  .filter,
-  .sort {
+  .filter {
     flex-direction: column;
     align-items: flex-start;
   }
