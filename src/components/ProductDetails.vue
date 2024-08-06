@@ -52,12 +52,15 @@ export default {
       }
     };
 
+    const goBack = () => {
+      router.push({ path: "/", query: route.query });
+    };
+
     return {
-      route,
-      router,
       product,
       loading,
       fetchProduct,
+      goBack,
     };
   },
 };
