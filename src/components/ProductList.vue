@@ -156,20 +156,26 @@ export default {
 }
 
 .product-card {
-  border: 1px solid #090808;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+    
 .product-image {
-  width: 150px;
+  width: 100%;
   height: auto;
-  margin-bottom: 1rem;
+  margin-top: auto;
 }
 
 .title {
@@ -180,7 +186,6 @@ export default {
 .price {
   color: green;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 ul {

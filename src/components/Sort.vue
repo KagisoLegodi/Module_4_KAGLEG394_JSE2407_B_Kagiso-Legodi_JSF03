@@ -38,6 +38,54 @@ export default {
 
 <style scoped>
 .sort {
-  margin-left: 1rem;
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background: #f9f9f9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+}
+
+select:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
+}
+
+@media (max-width: 768px) {
+  .filter,
+  .sort {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter,
+  .sort {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  select {
+    width: 100%;
+  }
 }
 </style>
+
