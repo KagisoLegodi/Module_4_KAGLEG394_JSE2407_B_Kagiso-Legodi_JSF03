@@ -24,6 +24,32 @@
     </div>
   </template>
   
+<script>
+import { ref, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import CardSkeleton from "./CardSkeleton.vue";
+
+export default {
+  name: "ProductDetail",
+  components: {
+    CardSkeleton,
+  },
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+    const product = ref(null);
+    const loading = ref(true);
+
+    return {
+      route,
+      router,
+      product,
+      loading,
+    };
+  },
+};
+</script>
+
   <style>
   .product-detail {
     display: flex;
