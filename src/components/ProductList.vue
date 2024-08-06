@@ -36,3 +36,41 @@
     </div>
   </template>
   
+  <script>
+  import { ref, onMounted, watch, computed } from "vue";
+  import { useRoute, useRouter } from "vue-router";
+  import ProductSkeleton from "./ProductSkeleton.vue";
+  import Filter from "./Filter.vue";
+  import Sort from "./Sort.vue";
+  import { filterProducts, fetchCategories } from "../productUtils";
+  
+  export default {
+    name: "ProductList",
+    components: {
+      ProductSkeleton,
+      Filter,
+      Sort,
+    },
+    setup() {
+      const route = useRoute();
+      const router = useRouter();
+  
+      const loading = ref(true);
+      const products = ref([]);
+      const categories = ref([]);
+      const selectedCategory = ref(route.query.category || "");
+      const sortOrder = ref(route.query.sort || "");
+  
+      return {
+        route,
+        router,
+        loading,
+        products,
+        categories,
+        selectedCategory,
+        sortOrder,
+      };
+    },
+  };
+  </script>
+  
