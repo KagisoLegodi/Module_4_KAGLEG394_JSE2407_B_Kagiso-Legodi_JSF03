@@ -92,6 +92,10 @@ export default {
       }
     };
 
+    const fetchCategoriesData = async () => {
+      categories.value = await fetchCategories();
+    };
+
     return {
       route,
       router,
@@ -102,6 +106,7 @@ export default {
       sortOrder,
       filteredProducts,
       fetchProducts,
+      fetchCategoriesData,
     };
   },
 };
