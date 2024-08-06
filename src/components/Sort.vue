@@ -1,15 +1,15 @@
 <template>
-    <div class="sort">
-      <select @change="handleSortChange" v-model="sortOrder">
-        <option value="">Default</option>
-        <option value="low-to-high">Price: Low to High</option>
-        <option value="high-to-low">Price: High to Low</option>
-      </select>
-    </div>
-  </template>
-  
-  <script>
-import { ref, watch } from "vue";
+  <div class="sort">
+    <select @change="handleSortChange" v-model="sortOrder">
+      <option value="">Default</option>
+      <option value="low-to-high">Price: Low to High</option>
+      <option value="high-to-low">Price: High to Low</option>
+    </select>
+  </div>
+</template>
+
+<script>
+import { ref, watch, onMounted } from "vue";
 
 export default {
   name: "Sort",
@@ -26,6 +26,10 @@ export default {
 
     watch(sortOrder, () => {
       handleSortChange();
+    });
+
+    onMounted(() => {
+      emit("update:sort", sortOrder.value);
     });
 
     return {
@@ -86,4 +90,3 @@ select:focus {
   }
 }
 </style>
-

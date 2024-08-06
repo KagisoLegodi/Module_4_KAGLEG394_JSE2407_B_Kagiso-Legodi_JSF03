@@ -81,7 +81,7 @@ export default {
 
     const fetchProducts = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate loading
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         products.value = data;
@@ -98,12 +98,20 @@ export default {
 
     const handleCategoryChange = (newCategory) => {
       selectedCategory.value = newCategory;
-      router.push({ query: { ...route.query, category: newCategory } });
+      const newQuery = { ...route.query, category: newCategory };
+      if (!newCategory) {
+        delete newQuery.category;
+      }
+      router.push({ query: newQuery });
     };
 
     const handleSortChange = (newSort) => {
       sortOrder.value = newSort;
-      router.push({ query: { ...route.query, sort: newSort } });
+      const newQuery = { ...route.query, sort: newSort };
+      if (!newSort) {
+        delete newQuery.sort;
+      }
+      router.push({ query: newQuery });
     };
 
     onMounted(async () => {
@@ -171,7 +179,7 @@ export default {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-    
+
 .product-image {
   width: 100%;
   height: auto;
