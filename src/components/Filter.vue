@@ -37,3 +37,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.filter {
+  margin-right: 1rem;
+}
+</style>
