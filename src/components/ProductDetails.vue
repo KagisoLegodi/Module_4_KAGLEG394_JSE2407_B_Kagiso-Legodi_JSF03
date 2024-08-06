@@ -23,7 +23,7 @@
       </div>
     </div>
   </template>
-  
+
 <script>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -40,11 +40,24 @@ export default {
     const product = ref(null);
     const loading = ref(true);
 
+    const fetchProduct = async () => {
+      const id = route.params.id;
+      try {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        product.value = await response.json();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        loading.value = false;
+      }
+    };
+
     return {
       route,
       router,
       product,
       loading,
+      fetchProduct,
     };
   },
 };
