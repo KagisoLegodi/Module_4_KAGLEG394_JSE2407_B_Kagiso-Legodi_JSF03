@@ -106,6 +106,20 @@ export default {
       router.push({ query: { ...route.query, sort: newSort } });
     };
 
+    onMounted(async () => {
+      await fetchCategoriesData();
+      await fetchProducts();
+    });
+
+    watch(
+      () => route.query,
+      (newQuery) => {
+        selectedCategory.value = newQuery.category || "";
+        sortOrder.value = newQuery.sort || "";
+      },
+      { immediate: true }
+    );
+
     return {
       route,
       router,
