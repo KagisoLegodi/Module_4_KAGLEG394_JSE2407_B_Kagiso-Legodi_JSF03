@@ -8,3 +8,30 @@
     </div>
   </template>
   
+  <script>
+import { ref, watch } from "vue";
+
+export default {
+  name: "Sort",
+  props: {
+    initialSort: String,
+  },
+  emits: ["update:sort"],
+  setup(props, { emit }) {
+    const sortOrder = ref(props.initialSort || "");
+
+    const handleSortChange = () => {
+      emit("update:sort", sortOrder.value);
+    };
+
+    watch(sortOrder, () => {
+      handleSortChange();
+    });
+
+    return {
+      sortOrder,
+      handleSortChange,
+    };
+  },
+};
+</script>
